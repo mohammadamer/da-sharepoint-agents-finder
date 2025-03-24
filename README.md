@@ -6,7 +6,7 @@ SharePoint Agents Finder uses the Microsoft Graph API as a Copilot plugin in a d
 
 ## Overview
 
-[![SharePoint Agents Finder declarative agent - quick demo](./assets/SharePoint-Agents-Finder-quick-demo.png)](https://youtu.be/s6T6Uw5uC1Q)
+[![SharePoint Agents Finder declarative agent - demo](./assets/SharePoint-Agents-Finder-demo.png)](https://youtu.be/s6T6Uw5uC1Q)
 
 > **Prerequisites**
 >
