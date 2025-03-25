@@ -19,7 +19,7 @@ Version|Date|Comments
 1.0|March 24, 2025|Initial solution
 1.0|March 25, 2025|Updated README with Prerequisites and Minimal path to awesome
 
-> **Prerequisites**
+## Prerequisites
 
 1. **Entra ID App Registration**:
    - Register an Entra ID application.
@@ -46,7 +46,7 @@ Version|Date|Comments
         - Save the information. 
         - A new OAuth registration key will be generated. Save it in secure place to be added in `.env.dev`
 
->
+3. **How to run this sample**:
 > To run this app template in your local dev machine, you will need:
 >
 > - [Node.js](https://nodejs.org/), supported versions: 18, 20
@@ -112,8 +112,12 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 ## Key Features
 - **Interactive Chat experience**: The SharePoint Agents Finder declarative agent offers a seamless and interactive chat experience within the Microsoft 365 Copilot chat interface.
 - **Graph API Integration**: Utilizes the Microsoft Graph API as a Copilot plugin in a declarative agent.
-- **Querying Microsoft 365 and SharePoint content**: Querying Microsoft 365 and SharePoint content  delivering structured responses in table format with links to files.
+- **Querying Microsoft 365 and SharePoint content**: Querying Microsoft 365 and SharePoint content delivering structured responses in table format with links to files.
+- **SharePoint Agents Finder or SharePoint Agents doc finder**: As long as the agent utilizes the Microsoft Graph API search then it could find not only SharePoint Agents but also any document in Microsoft 365.
 
+## Potential Improvements
+- **Table of Responses**: Table of Responses is a potential improvement that could be improved through the instructions
+- **SharePoint Agent Link**: SharePoint Agent Link should be improved to either direct you to the agent or the link of the agent should appear in the SiteAssets library.
 
 ## Addition information and references
 
