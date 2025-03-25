@@ -6,9 +6,46 @@ SharePoint Agents Finder uses the Microsoft Graph API as a Copilot plugin in a d
 
 ## Overview
 
-[![SharePoint Agents Finder declarative agent - demo](./assets/SharePoint-Agents-Finder-demo.png)](https://youtu.be/s6T6Uw5uC1Q)
+[![SharePoint Agents Finder declarative agent - demo](./assets/SharePoint-Agents-Finder-demo01.png)](https://youtu.be/s6T6Uw5uC1Q)
+
+## Contributors
+
+* [Mohammad Amer](https://github.com/mohammadamer) - M365 Development MVP
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|March 24, 2025|Initial solution
+1.0|March 25, 2025|Updated README with Prerequisites and Minimal path to awesome
 
 > **Prerequisites**
+
+1. **Entra ID App Registration**:
+   - Register an Entra ID application.
+   - Assign the Graph API permissions: `Files.Read.All` as delegated permissions.
+   - Retrieve the `ClientId`, `ClientSecret`, and `TenantID`.
+   - Add the https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect as a redirect URL for web platform in the Authentication settings.
+
+2. **Teams developer portal**:
+   - Open [Teams developer portal](https://dev.teams.microsoft.com/)
+   - Add a new OAuth client registration 
+   - Register a new client with the following information 
+        - Registration name: da-sharepoint-agents-finder
+        - Base URL: https://graph.microsoft.com/v1.0
+        - Restrict usage by org: My organization only
+        - Restrict usage by app: Any Teams app (when agent is deployed, use the Teams app ID).
+
+   - OAuth settings
+        - Client ID: <the entra ID application ID>
+        - Client secret: <the Entra ID application secret>
+        - Authorization endpoint `(replace tenantid by your own value)`: https://login.microsoftonline.com/tenantid/oauth2/v2.0/authorize
+        - Token endpoint `(replace tenantid by your own value)`: https://login.microsoftonline.com/tenantid/oauth2/v2.0/token
+        - Refresh endpoint `(replace tenantid by your own value)`: https://login.microsoftonline.com/tenantid/oauth2/v2.0/refresh
+        - Scope: Files.Read.All
+        - Save the information. 
+        - A new OAuth registration key will be generated. Save it in secure place to be added in `.env.dev`
+
 >
 > To run this app template in your local dev machine, you will need:
 >
@@ -51,18 +88,35 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 | `teamsapp.yml` | This is the main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 
 ## Minimal path to awesome
-`Stay tuned! I'll update read me with all details of Minimal path to awesome`
+1. **Clone the Repository**:
+   - Clone this repository to your local machine.
 
-## Contributors
+2. **Navigate to Solution Folder**:
+   - Ensure you are in the solution folder of the cloned repository.
 
-* [Mohammad Amer](https://github.com/mohammadamer) - M365 Development MVP
+3. **Update graphsearchplugin-openapi.yml**:
+   - Ensure you open this file `appPackage\graphsearchplugin-openapi.yml` and update the `tenantid` with your tenant Id.
+   ```
+     securitySchemes:
+    azureaadv2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/tenantid/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/tenantid/oauth2/v2.0/token
+   ```
+3. **Update .env.dev file**:
+   - Ensure you open this file and update this `OAUTH2_REGISTRATIONKEY` key with OAuth registration key generated in the prerequisites
+   
 
-## Version history
+## Key Features
+- **Interactive Chat experience**: The SharePoint Agents Finder declarative agent offers a seamless and interactive chat experience within the Microsoft 365 Copilot chat interface.
+- **Graph API Integration**: Utilizes the Microsoft Graph API as a Copilot plugin in a declarative agent.
+- **Querying Microsoft 365 and SharePoint content**: Querying Microsoft 365 and SharePoint content  delivering structured responses in table format with links to files.
 
-Version|Date|Comments
--------|----|--------
-1.0|March 24, 2025|Initial solution
 
 ## Addition information and references
 
-- [Declarative agents for Microsoft 365](https://aka.ms/teams-toolkit-declarative-agent)
+- [Declarative agents for Microsoft 365](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-agent?wt.mc_id=MVP_433449)
+- [Copilot developer Camp](https://aka.ms/copilotdevcamp?wt.mc_id=MVP_433449)
+- [Microsoft 365 Copilot pro-developer samples](https://github.com/pnp/copilot-pro-dev-samples/)
